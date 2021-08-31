@@ -102,9 +102,9 @@
   <li>STEP 2: Read the <a href="https://fastcashmoneyplus.biz/terms.html" target="_blank">FastCashMoneyPlus TERMS AND CONDITIONS</a>, and then click this box to indicate that you've read it:<input id="read-tos" type="checkbox"> <- <strong>Pay EXTRA ATTENTION to SECTION 2</strong></li>
   <li>STEP 2: Click this button to connect you enable FastCashMoneyPlus to connect you to the Ethereum block chain: <button id="connect-wallet">CONNECT BLOCKCHAIN</button> <- PLEASE CLICK HERE TO CONNECT TO BLOCKCHAIN</li>
   <li>
-    STEP 3: Please enter your FastCash Address and secret password into the boxes below. MAKE SURE THAT THIS IS THE CORRECT ADDRESS AND PASSWORD OR ELSE YOU MAY SEND YOUR FASTCASH TO THE WRONG PLACE:
+    STEP 3: Please enter your FastCash Address and secret FASTCASH password into the boxes below. MAKE SURE THAT THIS IS THE CORRECT ADDRESS AND PASSWORD OR ELSE YOU MAY SEND YOUR FASTCASH TO THE WRONG PLACE:
     <input id="fc-address" placeholder="FASTCASH ADDRESS">
-    <input id="fc-password" placeholder="SECRET PASSWORD">
+    <input id="fc-password" style="width: 200px" placeholder="SECRET FASTCASH PASSWORD">
   </li>
   <li>
     STEP 4: Click this button to purchase 1 FASTCASH for 0.25 ETHEREUM: <button id="purchase">PURCHASE FASTCASH</button> <strong>IF YOU GET AN ERROR ON THIS STEP, TRY OPENING METAMASK AND ENSURING THAT YOUR WALLET IS CONNECTED</strong>
@@ -164,16 +164,21 @@
 
 
 
-  function getFCBalance() {
-    fastCashContract.balanceOf(discountContractAddress)
-      .then(remainingBalanceResponse => {
-        discountFastCashRemaining = remainingBalanceResponse.div(10**9).div(10**9).toNumber()
-        document.getElementById('fastcash-left').innerHTML = `Discount FastCash Remaining: ${discountFastCashRemaining} -- Act now before it's too late!`
-      })
-      .catch(e => {
-        console.log(e)
+  async function getFCBalance() {
+    const remainingBalanceResponse = await fastCashContract.balanceOf(discountContractAddress)
+    const isLocked = await discountContract.isLocked()
+
+    try {
+      discountFastCashRemaining = remainingBalanceResponse.div(10**9).div(10**9).toNumber()
+
+      if (isLocked) {
+          document.getElementById('fastcash-left').innerHTML = `The Discount FastCash contract is currently LOCKED! Please refresh this page at 4pm EASTERN DAYLIGHT TIME 8/31`
+      } else {
+          document.getElementById('fastcash-left').innerHTML = `Discount FastCash Remaining: ${discountFastCashRemaining} -- Act now before it's too late!`
+      }
+    } catch (e) {
         document.getElementById('fastcash-left').innerHTML = `Discount FastCash Remaining: ERROR:${e} -- Act now before it's too late!`
-      })
+    }
   }
 
   getFCBalance()
