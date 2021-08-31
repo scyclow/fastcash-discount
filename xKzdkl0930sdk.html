@@ -172,7 +172,7 @@
       discountFastCashRemaining = remainingBalanceResponse.div(10**9).div(10**9).toNumber()
 
       if (isLocked) {
-          document.getElementById('fastcash-left').innerHTML = `The Discount FastCash contract is currently LOCKED! Please refresh this page at 4pm EASTERN DAYLIGHT TIME 8/31`
+          document.getElementById('fastcash-left').innerHTML = `Discount FastCash Remaining: ${discountFastCashRemaining} -- The Discount FastCash contract is currently LOCKED! Please refresh this page at 4pm EASTERN DAYLIGHT TIME 8/31`
       } else {
           document.getElementById('fastcash-left').innerHTML = `Discount FastCash Remaining: ${discountFastCashRemaining} -- Act now before it's too late!`
       }
