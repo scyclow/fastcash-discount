@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+<body>
+<!-- discount-fastcashmoneyofficial.0ms.co -->
+<style type="text/css">
+  body {
+    background: #adff9a;
+  }
+
+  li {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  strong {
+    font-size: 25px;
+    text-decoration: underline;
+  }
+
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .blink {
+    animation: Blink 2s linear infinite;
+  }
+
+  #timer {
+    display: inline-block;
+    margin:  50px auto;
+    font-size: 120px;
+    background: #fff;
+    padding: 10px;
+
+  }
+
+  @keyframes Blink {
+    0% {
+      border:  2px dashed;
+      padding: 5px;
+    }
+
+    1% {
+      border: 0;
+      padding: 0;
+    }
+
+    50% {
+      border: 0;
+      padding: 0;
+    }
+
+    51% {
+      border:  2px dashed;
+      padding: 5px;
+    }
+
+    100% {
+      border:  2px dashed;
+      padding: 5px;
+    }
+  }
+</style>
+
+<img src="./Special-Sale-Pic.png" style="max-width: 300px;">
+<img src="./Special-Sale-Pic.png" style="max-width: 300px;">
+<img src="./Special-Sale-Pic.png" style="max-width: 300px;">
+<img src="./Special-Sale-Pic.png" style="max-width: 300px;">
+
+<h1>CONGRATULATIONS!!!</h1>
+
+<h2>You've been selected to participate in an exciting Fast Cash pilot program!</h2>
+
+<h3 id="timer"></h3>
+<div style="font-weight: bold; border: 4px solid red; padding: 1em; background: #ffff00">
+  WARNING:
+  <ul>
+    <li style="font-size: 30px;">DO NOT DISTRIBUTE THE LINK TO THIS PAGE</li>
+    <li style="font-size: 30px;">DO NOT ATTEMPT TO PURCHASE MORE THAN ONE DISCOUNT FASTCASH</li>
+  </ul>
+  IF YOU DO EITHER YOUR FASTCASH MAY BE CONFISCATED!!!
+</div>
+
+<p>In 2018 the founder of FastCashMoneyPlus.biz set out to change the lives of people all around the world. And over the years FatCash has grown to be an international powerhouse, but during that time its price appreciated to astronomical levels, such that people liek you could never afford it.</p>
+
+
+<p>THIS IS YOUR CHANCE TO OWN FASTCASH AT A HUGE DISCOUNT. Opportunities liek this don't come along every day, so <strong>PAY CLOSE ATTENTION TO THESE INSTRUCTIONS AND FOLLOW THEM EXACTLY</strong></p>
+
+<h2>Having Trouble? Contact <a href="https://discord.gg/ecjZnYW2" target="_blank">FastCashMoneyPlus Technical Support!</a></h2>
+
+<h2 id="fastcash-left" class="blink">Discount FastCash Remaining: ERROR - PLEASE CONNECT WALLET TO BLOCKCHAIN TO DISPLAY DISCOUNT CONTRACT BALANCE</h2>
+<p id="err-msg" style="color: red; font-size: 30px; background: white;"></p>
+
+<ol>
+  <li>STEP 1: Return to the previous page and ensure that your meta mask wallet is configured correctly + that it has plenty of ethereum in it.</li>
+  <li>STEP 2: Read the <a href="https://fastcashmoneyplus.biz/terms.html" target="_blank">FastCashMoneyPlus TERMS AND CONDITIONS</a>, and then click this box to indicate that you've read it:<input id="read-tos" type="checkbox"> <- <strong>Pay EXTRA ATTENTION to SECTION 2</strong></li>
+  <li>STEP 2: Click this button to connect you enable FastCashMoneyPlus to connect you to the Ethereum block chain: <button id="connect-wallet">CONNECT BLOCKCHAIN</button> <- PLEASE CLICK HERE TO CONNECT TO BLOCKCHAIN</li>
+  <li>
+    STEP 3: Please enter your FastCash Address and secret password into the boxes below. MAKE SURE THAT THIS IS THE CORRECT ADDRESS AND PASSWORD OR ELSE YOU MAY SEND YOUR FASTCASH TO THE WRONG PLACE:
+    <input id="fc-address" placeholder="FASTCASH ADDRESS">
+    <input id="fc-password" placeholder="SECRET PASSWORD">
+  </li>
+  <li>
+    STEP 4: Click this button to purchase 1 FASTCASH for 0.25 ETHEREUM: <button id="purchase">PURCHASE FASTCASH</button> <strong>IF YOU GET AN ERROR ON THIS STEP, TRY OPENING METAMASK AND ENSURING THAT YOUR WALLET IS CONNECTED</strong>
+  </li>
+  <li>STEP 5: Please <strong><a href="http://fastcashmoneyplus.biz/invest?noWarning=true#complete" target="_blank">RETURN TO THE PRIOR PAGE</a>, proceed to the bottom, and click: "Click here to SET UP YOUR FASTCASH WALLET!"</strong></li>
+
+</ol>
+
+
+
+<img src="./Special-Sale-Pic.png" style="max-width: 300px;">
+<img src="./Special-Sale-Pic.png" style="max-width: 300px;">
+<img src="./Special-Sale-Pic.png" style="max-width: 300px;">
+<img src="./Special-Sale-Pic.png" style="max-width: 300px;">
+
+
+
+</body>
+
+
+<script>
+  let provider
+  if (window.ethereum) {
+    provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
+  } else {
+    displayError(`BLOCK CHAIN ERROR: PLEASE SIGN IN TO YOUR WEB3 WALLET AND REFRESH THE PAGE`)
+  }
+
+  // // LOCAL CONTRACT ADDRESS
+  // const discountContractAddress = '0xe7f1725e7734ce288f8367e1bb143e90bb3f0512'
+  // const fastCashAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+
+  // // Rinkeby Contract addresses
+  // const discountContractAddress = '0xB71763b7aE1DA6769DE72653488086bD92BEE18B'
+  // const fastCashAddress = '0xad9AAd08864aE4d57E6D816c9Ab449eE3D1Da944'
+
+
+  // Mainnet Contract addresses
+  const discountContractAddress = '0x31004aDCEc5371F102e7fbA3c2485548324787Fe'
+  const fastCashAddress = '0xca5228d1fe52d22db85e02ca305cddd9e573d752'
+
+  const discountABI = [
+    'function buy() external payable',
+    'function isLocked() view returns (bool)'
+  ]
+
+  const fastCashABI = [
+    'function balanceOf(address owner) view returns (uint256)',
+    "function decimals() view returns (uint8)",
+    "function symbol() view returns (string)",
+  ]
+
+
+  let signer, connected, discountFastCashRemaining
+  const discountContract = new ethers.Contract(discountContractAddress, discountABI, provider)
+  const fastCashContract = new ethers.Contract(fastCashAddress, fastCashABI, provider)
+
+
+
+  function getFCBalance() {
+    fastCashContract.balanceOf(discountContractAddress)
+      .then(remainingBalanceResponse => {
+        discountFastCashRemaining = remainingBalanceResponse.div(10**9).div(10**9).toNumber()
+        document.getElementById('fastcash-left').innerHTML = `Discount FastCash Remaining: ${discountFastCashRemaining} -- Act now before it's too late!`
+      })
+      .catch(e => {
+        console.log(e)
+        document.getElementById('fastcash-left').innerHTML = `Discount FastCash Remaining: ERROR:${e} -- Act now before it's too late!`
+      })
+  }
+
+  getFCBalance()
+  setInterval(getFCBalance, 2000)
+
+
+  document.getElementById('connect-wallet').onclick = async () => {
+    if (!provider) displayError(`BLOCK CHAIN ERROR: PLEASE SIGN IN TO YOUR WEB3 WALLET AND REFRESH THE PAGE`)
+
+    displayError('')
+
+    document.getElementById('connect-wallet').innerHTML = 'connecting...'
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' }, []);
+      signer = await provider.getSigner()
+      connected = true
+
+
+
+      const isLocked = await discountContract.isLocked()
+
+
+
+      if (!discountFastCashRemaining || isLocked) {
+        document.getElementById('purchase').disabled = true
+        document.getElementById('fastcash-left').innerHTML = `There is no discount Discount Fast Cash remaining! Please check back at a later date`
+      } else {
+        document.getElementById('fastcash-left').innerHTML = `Discount FastCash Remaining: ${discountFastCashRemaining} -- Act now before it's too late!`
+      }
+
+      document.getElementById('connect-wallet').innerHTML = 'CONNECTED: true'
+      document.getElementById('connect-wallet').disabled = true
+
+    } catch (e) {
+      displayError(`BLOCK CHAIN ERROR: ${JSON.stringify(e)}`)
+      console.error(e)
+      return
+    }
+  }
+
+  document.getElementById('purchase').onclick = async () => {
+    displayError('TRANSACTION PENDING...')
+
+    if (!document.getElementById('fc-address').value || !document.getElementById('fc-password').value) {
+      displayError('BLOCK CHAIN ERROR: ERROR: FASTCASH ADDRESS AND PASSWORD DO NOT MATCH')
+      return
+    }
+
+    if (!document.getElementById('read-tos').checked) {
+      displayError('ERROR: PLEASE READ THE FASTCASH TERMS AND CONDITIONS')
+      return
+    }
+
+    if (!connected || !provider) {
+      displayError('BLOCK CHAIN ERROR: PLEASE CONNECT YOUR WALLET BY CLICKING THE CONNECT BLOCKCHAIN BUTTON')
+      return
+    }
+
+    try {
+      const addressKey = '__submittedAddress'
+      const preexistingWallet = localStorage.getItem(addressKey)
+
+      const currentAddres = await signer.getAddress()
+
+      if (!preexistingWallet) {
+        localStorage.setItem(addressKey, currentAddres)
+      } else if (preexistingWallet !== currentAddres) {
+        return
+      }
+      await discountContract.connect(signer).buy({
+        value: ethers.utils.parseEther('0.25'),
+      })
+
+      const interval = setInterval(async () => {
+        const userBalance = (await fastCashContract.balanceOf(currentAddres)).div(10**9).div(10**9).toNumber()
+        if (userBalance > 0) {
+          displayError(`BLOCK CHAIN ERROR: SUCCESS!! You now own 1.0000 FASTCASH`)
+        }
+      }, 1000)
+    } catch (e) {
+      displayError(`BLOCK CHAIN ERROR: ${JSON.stringify(e)}`)
+      console.error(e)
+      return
+    }
+
+
+
+    displayError('TRANSACTION COMPLETE!')
+
+
+  }
+
+  function displayError(errMsg) {
+    document.getElementById('err-msg').innerHTML = errMsg
+  }
+
+
+
+    const timer = document.getElementById('timer')
+    let timeLeft = 20000
+    const with0 = x => x < 10 ? '0' + Math.floor(x) : Math.floor(x)
+    const interval = setInterval(() => {
+      timeLeft -= 1
+      const minutes = with0(timeLeft / 6000)
+      const seconds = with0(timeLeft % 6000 / 100)
+      const cseconds = timeLeft % 100
+      timer.innerHTML = `${minutes}:${seconds}:${cseconds}`
+    }, 5)
+
+
+</script>
+</html>
